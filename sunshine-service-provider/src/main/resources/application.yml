@@ -5,5 +5,14 @@ spring:
     url: jdbc:mysql:///leyou?serverTimezone=UTC
     username: root
     password: root
+  application:
+    name: service-provider
 mybatis:
   type-aliases-package: cn.sunshinehubery.service.mapper
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 5  #心跳间隔时间
+    lease-expiration-duration-in-seconds: 10  #过期时间
