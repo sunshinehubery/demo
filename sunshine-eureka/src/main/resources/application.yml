@@ -1,0 +1,12 @@
+server:
+  port: 10087  #端口号
+spring:
+  application:
+    name: sunshine-eureka   #应用名称，在eureka注册中心显示
+eureka:
+  client:
+      service-url:
+        defaultZone: http://localhost:10086/eureka/
+  server:
+    eviction-interval-timer-in-ms: 10000  #失效剔除时间
+    enable-self-preservation: false  #关闭自我保护
