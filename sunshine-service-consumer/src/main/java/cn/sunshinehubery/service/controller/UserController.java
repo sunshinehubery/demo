@@ -2,12 +2,16 @@ package cn.sunshinehubery.service.controller;
 
 import cn.sunshinehubery.service.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 /**
  * @description:
@@ -20,10 +24,14 @@ import org.springframework.web.client.RestTemplate;
 public class UserController {
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private DiscoveryClient discoveryClient;
     @GetMapping
     @ResponseBody
     public User queryById(@RequestParam("id")Long id){
-        User user = restTemplate.getForObject("http://localhost:8088/user/" + id, User.class);
+        List<ServiceInstance> instances = discoveryClient.getInstances("service-provider");
+        ServiceInstance serviceInstance = instances.get(0);
+        User user = restTemplate.getForObject("http://" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + "/user/" + id, User.class);
         return user;
     }
 }
