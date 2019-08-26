@@ -1,0 +1,9 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    url: jdbc:mysql:///leyou?serverTimezone=UTC
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: cn.sunshinehubery.service.mapper
