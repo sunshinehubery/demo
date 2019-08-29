@@ -1,0 +1,16 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: sunshine-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+zuul:
+  routes:
+    service-provider: /service-provider/**
+  prefix: /api
+    #path: /service-provider/**
+    #url: http://localhost:8081
+    #serviceId: service-provider

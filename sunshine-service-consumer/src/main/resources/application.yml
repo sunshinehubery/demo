@@ -7,4 +7,19 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:10086/eureka/
-    registry-fetch-interval-seconds: 5  #��ȡ�����б��ļ��ʱ��
+    registry-fetch-interval-seconds: 5  #拉取服务列表的间隔时间
+#设置超时时间，默认是1s
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000  # 设置hystrix的超时时间为6000ms
+logging:
+  level:
+    cn.sunshinehubery: debug
+feign:
+  hystrix:
+    enabled: true    #默认是关闭的，需要开启
+

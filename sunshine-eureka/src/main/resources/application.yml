@@ -1,12 +1,12 @@
 server:
-  port: 10087  #¶Ë¿ÚºÅ
+  port: 10087  #ç«¯å£å·
 spring:
   application:
-    name: sunshine-eureka   #Ó¦ÓÃÃû³Æ£¬ÔÚeureka×¢²áÖĞĞÄÏÔÊ¾
+    name: sunshine-eureka   #å¾®æœåŠ¡åç§°
 eureka:
   client:
       service-url:
         defaultZone: http://localhost:10086/eureka/
   server:
-    eviction-interval-timer-in-ms: 10000  #Ê§Ğ§ÌŞ³ıÊ±¼ä
-    enable-self-preservation: false  #¹Ø±Õ×ÔÎÒ±£»¤
+    eviction-interval-timer-in-ms: 10000  #å¾®æœåŠ¡å¤±æ•ˆå‰”é™¤æ—¶é—´
+    enable-self-preservation: false  #è‡ªæˆ‘ä¿æŠ¤å…³é—­
